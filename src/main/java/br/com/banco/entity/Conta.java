@@ -17,7 +17,7 @@ public class Conta {
 	@Column(name = "id")
 	private Long id;
 	
-	@Column(name = "nomeResponsavel", length = 50, nullable = false)
+	@Column(name = "nome_responsavel", length = 50, nullable = false)
 	private String nomeResponsavel;
 	
 }

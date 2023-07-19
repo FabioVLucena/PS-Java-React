@@ -23,7 +23,7 @@ public class Transferencia {
 	@Column(name = "id")
 	private Long id;
 	
-	@Column(name = "dataTransferencia", nullable = false)
+	@Column(name = "data_transferencia", nullable = false)
 	private Date dataTransferencia;
 	
 	@Column(name = "valor", length = 20, precision = 2, nullable = false)
@@ -32,7 +32,7 @@ public class Transferencia {
 	@Column(name = "tipo", length = 15, nullable = false)
 	private String tipo;
 	
-	@Column(name = "nomeOperadorTransacao", length = 50)
+	@Column(name = "nome_operador_transacao", length = 50)
 	private String nomeOperadorTransacao;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
