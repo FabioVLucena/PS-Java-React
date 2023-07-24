@@ -25,10 +25,4 @@ public class ContaService {
 		return conta;
 	}
 	
-	public List<Conta> selectAll() {
-		List<Conta> contaList = this.contaRepository.findAll();
-		
-		return contaList;
-	}
-	
 }
