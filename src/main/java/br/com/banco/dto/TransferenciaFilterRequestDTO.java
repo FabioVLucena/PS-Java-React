@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 
 @Getter
-public class TransferenciaRequestDTO {
+public class TransferenciaFilterRequestDTO {
 
 	@NotEmpty(message = "Numero da conta não pode ser vazio.")
 	@NotBlank(message = "Numero da conta não pode ser vazio.")

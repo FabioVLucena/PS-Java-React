@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.banco.dto.TransferenciaRequestDTO;
+import br.com.banco.dto.TransferenciaFilterRequestDTO;
 import br.com.banco.entity.Transferencia;
 import br.com.banco.exception.WarningException;
 import br.com.banco.service.TransferenciaService;
@@ -23,8 +23,8 @@ public class TransferenciaController {
 	}
 	
 	@PostMapping
-	public List<Transferencia> findTransferencia(@RequestBody TransferenciaRequestDTO filtro) throws WarningException {
-		List<Transferencia> transferenciaList = this.transferenciaService.findTransferencia(filtro);
+	public List<Transferencia> findTransferencia(@RequestBody TransferenciaFilterRequestDTO filter) throws WarningException {
+		List<Transferencia> transferenciaList = this.transferenciaService.findTransferencia(filter);
 		
 		return transferenciaList;
 	}

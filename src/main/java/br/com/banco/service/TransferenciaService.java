@@ -10,7 +10,7 @@ import java.util.List;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import br.com.banco.dto.TransferenciaRequestDTO;
+import br.com.banco.dto.TransferenciaFilterRequestDTO;
 import br.com.banco.entity.Transferencia;
 import br.com.banco.exception.WarningException;
 import br.com.banco.repository.TransferenciaRepository;
@@ -26,26 +26,26 @@ public class TransferenciaService {
 		this.transferenciaRepository = transferenciaRepository;
 	}
 	
-	public List<Transferencia> findTransferencia(TransferenciaRequestDTO filtro) throws WarningException {
+	public List<Transferencia> findTransferencia(TransferenciaFilterRequestDTO filter) throws WarningException {
 		Specification<Transferencia> specs = Specification.where((root, query, cb) -> cb.conjunction());
 		
-		if (filtro.getContaNumero() != null) {
+		if (filter.getContaNumero() != null) {
 			// validating if account exists
-			this.contaService.getContaById(filtro.getContaNumero());
+			this.contaService.getContaById(filter.getContaNumero());
 			
-			specs = specs.and(contaNumeroEquals(filtro.getContaNumero()));
+			specs = specs.and(contaNumeroEquals(filter.getContaNumero()));
 		}
 
-		if (filtro.getDataTransferenciaInicial() != null) {
-			specs = specs.and(dataTransferenciaGreatEquals(filtro.getDataTransferenciaInicial()));
+		if (filter.getDataTransferenciaInicial() != null) {
+			specs = specs.and(dataTransferenciaGreatEquals(filter.getDataTransferenciaInicial()));
 		}
 		
-		if (filtro.getDataTransferenciaFinal() != null) {
-			specs = specs.and(dataTransferenciaLessEquals(filtro.getDataTransferenciaFinal()));
+		if (filter.getDataTransferenciaFinal() != null) {
+			specs = specs.and(dataTransferenciaLessEquals(filter.getDataTransferenciaFinal()));
 		}
 		
-		if (filtro.getOperadorNome() != null) {
-			specs = specs.and(operadorNomeEquals(filtro.getOperadorNome()));
+		if (filter.getOperadorNome() != null) {
+			specs = specs.and(operadorNomeEquals(filter.getOperadorNome()));
 		}
 		
 		return this.transferenciaRepository.findAll(specs);
