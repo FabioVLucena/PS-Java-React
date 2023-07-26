@@ -24,10 +24,7 @@ public class TransferenciaController {
 	
 	@PostMapping
 	public List<Transferencia> findTransferencia(@RequestBody TransferenciaRequestDTO filtro) throws WarningException {
-		
-		Long contaNumero = filtro.getContaNumero();
-		
-		List<Transferencia> transferenciaList = this.transferenciaService.findTransferencia(contaNumero, null, null, null);
+		List<Transferencia> transferenciaList = this.transferenciaService.findTransferencia(filtro);
 		
 		return transferenciaList;
 	}
